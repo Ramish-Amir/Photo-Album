@@ -1,0 +1,144 @@
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+.photos-header {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.back {
+  padding: 7px 10px;
+  border: 2px solid dodgerblue;
+  color: dodgerblue;
+  background: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.add, .edit {
+  padding: 7px 10px;
+  border: 2px solid dodgerblue;
+  color: white;
+  background: dodgerblue;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.delete {
+  padding: 7px 10px;
+  border: 2px solid red;
+  color: white;
+  background: red;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.photos-container {
+  padding: 30px;
+}
+
+.photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgba(192, 192, 192, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.right {
+  width: 175px;
+  height: 200px;
+  background: skyblue;
+  border-radius: 5px;
+}
+
+.right > img {
+  width: 175px;
+  height: 200px;
+}
+
+.add-photo-container {
+  margin: auto;
+  background: rgba(192, 192, 192, 0.5);
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 40%;
+  padding: 0 30px 30px;
+}
+
+.form-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(192, 192, 192, 0.4);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: rgba(192, 192, 192, 0.7);
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-container input {
+  width: 400px;
+  padding: 5px 10px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.success {
+  background: green;
+  border-radius: 5px;
+  border: 2px solid black;
+  color: white;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: gray 3px 3px 3px;
+}
+
+.edit-photo-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(192, 192, 192, 0.8);
+  background: antiquewhite;
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 40%;
+  padding: 0 30px 30px;
+}

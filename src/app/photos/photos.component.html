@@ -1,0 +1,88 @@
+<div class="photos-header">
+  <input class="back" type="button" routerLink="" value="Go Back">
+  <input (click)="openAddPhoto()" class="add" type="button" value="Add Photo">
+</div>
+<h1>Photos</h1>
+
+<div *ngIf="isOpenAddContainer" class="add-photo-container">
+  <div>
+    <div class="form-top">
+      <h2>Add Photo:</h2>
+      <div class="close-button" (click)="closeAddPhoto()">✖</div>
+    </div>
+    <form [formGroup]="addPhotoForm" (ngSubmit)="addPhoto()">
+      <div class="input-container">
+        <label>Title: </label>
+        <input type="text" name="title" formControlName="title">
+      </div>
+      <div
+        *ngIf="(addPhotoForm.get('title').touched || addPhotoForm.get('title').dirty) && !addPhotoForm.get('title').valid">
+        <div class="error">Title is required</div>
+      </div>
+      <div class="input-container">
+        <label>URL: </label>
+        <input type="text" name="url" formControlName="url">
+      </div>
+      <div
+        *ngIf="(addPhotoForm.get('url').touched || addPhotoForm.get('url').dirty) && !addPhotoForm.get('url').valid">
+        <div *ngIf="addPhotoForm.get('url').errors.required" class="error">URL is required</div>
+        <div *ngIf="addPhotoForm.get('url').errors.pattern" class="error">Please enter valid URL</div>
+      </div>
+      <input class="add" [disabled]="!addPhotoForm.valid" type="submit" value="Add Photo">
+    </form>
+    <div *ngIf="isSuccessfullyAdded" class="success">Photo added successfully</div>
+  </div>
+</div>
+
+
+<div *ngIf="isOpenEditContainer" class="edit-photo-container">
+  <div>
+    <div class="form-top">
+      <h2>Edit Photo:</h2>
+      <div class="close-button" (click)="closeEditPhoto()">✖</div>
+    </div>
+    <form [formGroup]="editPhotoForm" (ngSubmit)="editPhoto()">
+      <div class="input-container">
+        <label>Title: </label>
+        <input type="text" name="title" formControlName="title">
+      </div>
+      <div
+        *ngIf="(editPhotoForm.get('title').touched || editPhotoForm.get('title').dirty) && !editPhotoForm.get('title').valid">
+        <div class="error">Title is required</div>
+      </div>
+      <div class="input-container">
+        <label>URL: </label>
+        <input type="text" name="url" formControlName="url">
+      </div>
+      <div
+        *ngIf="(editPhotoForm.get('url').touched || editPhotoForm.get('url').dirty) && !editPhotoForm.get('url').valid">
+        <div *ngIf="editPhotoForm.get('url').errors.required" class="error">URL is required</div>
+        <div *ngIf="editPhotoForm.get('url').errors.pattern" class="error">Please enter valid URL</div>
+      </div>
+      <input class="add" [disabled]="!editPhotoForm.valid" type="submit" value="Edit Photo">
+    </form>
+    <div *ngIf="isSuccessfullyEdited" class="success">Photo edited successfully</div>
+  </div>
+</div>
+
+
+<div class="photos-container">
+  <div *ngFor="let photo of photos">
+    <div class="photo" *ngIf="photo.albumId === currentAlbumId">
+      <div class="left">
+        <h3>Title: {{photo.title}}</h3>
+        <div>
+          <input class="edit" type="button" (click)="openEditPhoto(photo.title, photo.thumbnailUrl, photo.id)"
+                 value="Edit Photo">
+          <input class="delete" type="button" (click)="deletePhoto(photo.id)" value="Delete Photo">
+        </div>
+        <div *ngIf="photo.id === currentlyDeletedPhotoId" class="success">Photo deleted successfully</div>
+      </div>
+      <div class="right">
+        <img [src]="photo.thumbnailUrl" alt="image">
+      </div>
+    </div>
+  </div>
+</div>
+
+

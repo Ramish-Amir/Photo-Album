@@ -1,0 +1,8 @@
+<h1>Albums Collection</h1>
+
+<div class="albums-container">
+  <div *ngFor="let album of albums" (click)="showPhotos(album.id)" class="album">
+    {{album.title}}
+  </div>
+
+</div>
